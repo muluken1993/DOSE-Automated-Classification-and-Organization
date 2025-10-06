@@ -34,12 +34,10 @@ function createWindow() {
   }
 }
 
-// Add this missing IPC handler for opening files
 ipcMain.handle('open-file', async (event, filePath) => {
   try {
     console.log('Opening file:', filePath);
     
-    // Check if file exists
     if (!fs.existsSync(filePath)) {
       return { success: false, error: 'File not found: ' + filePath };
     }
@@ -463,5 +461,5 @@ process.on('uncaughtException', (error) => {
 });
 
 process.on('unhandledRejection', (reason, promise) => {
-  console.error('🔥 Unhandled Promise Rejection at:', promise, 'reason:', reason);
+  console.error('Unhandled Promise Rejection at:', promise, 'reason:', reason);
 });
